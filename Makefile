@@ -2,14 +2,14 @@
 SRCS = srcs/main.c srcs/display_map.c srcs/initialise_manager.c srcs/parsing.c srcs/move.c
 NAME = so_long
 OBJS = $(SRCS:.c=.o)
-GNL = get_next_line/gnl
+GNL = gnl/gnl
 CC = gcc
 
 
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C get_next_line
+	$(MAKE) -C gnl
 	$(CC) $(OBJS) $(GNL) -lmlx -framework OpenGL -framework AppKit -ggdb3 -fsanitize=address -o $(NAME)
 
 %.o: %.c
@@ -19,7 +19,7 @@ clean :
 	rm -f $(OBJS)
 
 fclean : clean
-	$(MAKE) fclean -C get_next_line
+	$(MAKE) fclean -C gnl
 	rm -f $(NAME)
 
 re : fclean all
