@@ -1,5 +1,5 @@
 
-SRCS = srcs/main.c srcs/display_map.c srcs/initialise_manager.c srcs/parsing.c srcs/move.c srcs/test_map.c
+SRCS = srcs/main.c srcs/display_map.c srcs/initialise_manager.c srcs/parsing.c srcs/move.c
 NAME = so_long
 OBJS = $(SRCS:.c=.o)
 GNL = get_next_line/gnl
