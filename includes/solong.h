@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:34 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/01/24 16:15:35 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/05 11:42:20 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_manager
 	int		total_items;
 	int		player_x;
 	int		player_y;
+	char	keep;
 }	t_manager;
 
 # define WALL 1
@@ -47,8 +48,17 @@ typedef struct s_manager
 void	display_map(t_manager manager);
 int		init_manager(t_manager *manager, int argc, char **argv);
 char	*get_next_line(int fd);
+int		ft_printf(const char *str, ...);
 int		read_map(int fd, t_manager *manager);
 int		move(int keycode, t_manager *manager);
 int		close_win(t_manager *manager);
+int		test_map(t_manager manager);
+
+int		test_shape(t_manager manager);
+int		test_walls(t_manager manager);
+int		test_elts(t_manager manager, int y);
+
+void	setpath(void *mlx, void *window, int x, int y);
+void	setexit(void *mlx, void *window, int x, int y);
 
 #endif

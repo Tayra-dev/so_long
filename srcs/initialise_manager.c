@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:35:15 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/01/24 11:49:30 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/05 10:09:08 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ int	init_manager(t_manager *manager, int argc, char **argv)
 	read_map(fd, manager);
 	manager->items = 0;
 	manager->moves = 0;
+	manager->keep = '0';
 	manager->total_items = get_max_items(*manager);
+	if (test_map(*manager) != 0)
+	{
+		printf("%d", test_map(*manager));
+		return (0);
+	}
 	return (1);
 }

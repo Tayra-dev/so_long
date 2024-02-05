@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:06:06 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/01/24 16:15:49 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/05 11:37:21 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ static void	move_player_pos(t_manager *manager, int x, int y)
 			manager->items++;
 		if (manager->map[y][x] == 'E' && manager->items == manager->total_items)
 			close_win(manager);
+		if (manager->keep != 'E')
+			manager->map[manager->player_y][manager->player_x] = '0';
+		else
+			manager->map[manager->player_y][manager->player_x] = manager->keep;
+		manager->keep = manager->map[y][x];
 		manager->map[y][x] = 'P';
-		manager->map[manager->player_y][manager->player_x] = '0';
 		manager->player_x = x;
 		manager->player_y = y;
 	}
@@ -29,8 +33,8 @@ static void	move_player_pos(t_manager *manager, int x, int y)
 
 int	move(int keycode, t_manager *manager)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	x = manager->player_x;
 	y = manager->player_y;
@@ -45,7 +49,8 @@ int	move(int keycode, t_manager *manager)
 	if (keycode == 53)
 		close_win(manager);
 	manager->moves++;
-	printf("%d moves", manager->moves);
+	ft_printf("%d moves\n", manager->moves);
+	mlx_clear_window(manager->mlx, manager->window);
 	display_map(*manager);
 	return (0);
 }

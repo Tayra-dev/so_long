@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:31:28 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/11/14 11:44:56 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/05 09:50:43 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static char	*get_line(char *buff)
 	if (!buff[i])
 		return (NULL);
 	while (buff[i] && buff[i] != '\n')
-		i++;
-	if (buff[i] == '\n')
 		i++;
 	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
