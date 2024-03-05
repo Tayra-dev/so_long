@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:31:28 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/02/05 09:50:43 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:52:09 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_next_buff(char *buff)
 		i++;
 	if (!buff[i])
 		return (ft_error(buff, 0));
-	result = malloc((ft_strlen(buff) -i + 1) * sizeof(char));
+	result = malloc((ft_strlen(buff) - i + 1) * sizeof(char));
 	if (!result)
 		return (ft_error(buff, 0));
 	i++;

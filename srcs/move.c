@@ -6,13 +6,13 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:06:06 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/02/05 11:37:21 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:50:04 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-static void	move_player_pos(t_manager *manager, int x, int y)
+void	move_player_pos(t_manager *manager, int x, int y)
 {
 	if (manager->map[y][x] != '1')
 	{
@@ -28,6 +28,10 @@ static void	move_player_pos(t_manager *manager, int x, int y)
 		manager->map[y][x] = 'P';
 		manager->player_x = x;
 		manager->player_y = y;
+		manager->moves++;
+		ft_printf("%d moves\n", manager->moves);
+		mlx_clear_window(manager->mlx, manager->window);
+		display_map(*manager);
 	}
 }
 
@@ -48,9 +52,5 @@ int	move(int keycode, t_manager *manager)
 		move_player_pos(manager, x, y + 1);
 	if (keycode == 53)
 		close_win(manager);
-	manager->moves++;
-	ft_printf("%d moves\n", manager->moves);
-	mlx_clear_window(manager->mlx, manager->window);
-	display_map(*manager);
 	return (0);
 }

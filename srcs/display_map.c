@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:22:05 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/02/05 11:38:07 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/05 12:11:49 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	setexit(void *mlx, void *window, int x, int y)
 	relative_path = "./textures/tiles/exit.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(mlx, window, img,
-		(x * (WIDTH / 2)) - y * (WIDTH / 2) + 500,
-		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.4) + 500);
+		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
+		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
 	mlx_destroy_image(mlx, img);
 }
 
@@ -37,8 +37,8 @@ void	setwall(void *mlx, void *window, int x, int y)
 	relative_path = "./textures/tiles/wall.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(mlx, window, img, 
-		(x * (WIDTH / 2)) - y * (WIDTH / 2) + 500,
-		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.4) + 500);
+		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
+		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
 	mlx_destroy_image(mlx, img);
 }
 
@@ -52,8 +52,8 @@ void	setpath(void *mlx, void *window, int x, int y)
 	relative_path = "./textures/tiles/path.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(mlx, window, img,
-		(x * (WIDTH / 2)) - y * (WIDTH / 2) + 500,
-		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.4) + 500);
+		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
+		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
 	mlx_destroy_image(mlx, img);
 }
 
@@ -67,8 +67,8 @@ void	setitem(void *mlx, void *window, int x, int y)
 	relative_path = "./textures/items/item.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(mlx, window, img,
-		(x * (WIDTH / 2)) - y * (WIDTH / 2) + 500,
-		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.3) + 500);
+		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
+		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET - 10);
 	mlx_destroy_image(mlx, img);
 }
 
@@ -77,10 +77,10 @@ void	display_map(t_manager manager)
 	int	x;
 	int	y;
 
-	y = 0;
+	y = -1;
 	while (manager.map[++y])
 	{
-		x = 0;
+		x = -1;
 		while (manager.map[y][++x])
 		{
 			if (manager.map[y][x] == '0')

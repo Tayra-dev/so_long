@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:34 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/02/05 11:42:20 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:04:34 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,16 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
 typedef struct s_manager
 {
 	void	*mlx;
 	void	*window;
 	char	**map;
+	char	**testmap;
 	int		moves;
 	int		items;
+	int		test_item;
+	int		test_exit;
 	int		total_items;
 	int		player_x;
 	int		player_y;
@@ -44,21 +38,28 @@ typedef struct s_manager
 # define WALL 1
 # define PATH 0
 # define WIDTH 32
+# define OFFSET 400
 
 void	display_map(t_manager manager);
-int		init_manager(t_manager *manager, int argc, char **argv);
+int		init_manager(t_manager *manager, char **argv, int fd);
 char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
-int		read_map(int fd, t_manager *manager);
+char	**read_map(int fd, char **map);
 int		move(int keycode, t_manager *manager);
 int		close_win(t_manager *manager);
 int		test_map(t_manager manager);
+int		get_player_x(t_manager manager);
+int		get_player_y(t_manager manager);
 
 int		test_shape(t_manager manager);
 int		test_walls(t_manager manager);
 int		test_elts(t_manager manager, int y);
 
+void	solver(t_manager *manager, int y, int x);
+
 void	setpath(void *mlx, void *window, int x, int y);
 void	setexit(void *mlx, void *window, int x, int y);
+
+int		ft_error(int error);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:44:51 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/01/24 11:46:27 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/05 12:25:36 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,25 @@ char	**array_join(char **array, char *str)
 		k++;
 	}
 	new_array[k] = str;
-	new_array[k + 1] = NULL;
+	new_array[k + 1] = 0;
 	free(array);
 	return (new_array);
 }
 
-int	read_map(int fd, t_manager *manager)
+char	**read_map(int fd, char **map)
 {
 	char	*str;
 
-	manager->map = malloc(1 * sizeof(char *));
-	if (!manager->map)
-		return (-1);
-	manager->map[0] = NULL;
+	map = malloc(1 * sizeof(char *));
+	if (!map)
+		return (map);
+	map[0] = NULL;
 	str = get_next_line(fd);
 	while (str)
 	{
-		manager->map = array_join(manager->map, str);
+		map = array_join(map, str);
 		str = get_next_line(fd);
 	}
-	manager->player_x = get_player_x(*manager);
-	manager->player_y = get_player_y(*manager);
-	return (0);
+	free(str);
+	return (map);
 }

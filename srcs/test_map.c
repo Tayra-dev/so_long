@@ -37,12 +37,15 @@ int	test_comp(t_manager manager)
 int	test_map(t_manager manager)
 {
 	if (test_shape(manager))
-		return (-2);
+		return (ft_error(-2));
 	if (test_elts(manager, 0))
-		return (-1);
+		return (ft_error(-1));
 	if (test_walls(manager))
-		return (-3);
+		return (ft_error(-3));
 	if (test_comp(manager))
-		return (-4);
+		return (ft_error(-4));
+	solver(&manager, manager.player_y, manager.player_x);
+	if (!(manager.total_items == manager.test_item && manager.test_exit == 1))
+		return (ft_error(-5));
 	return (0);
 }
