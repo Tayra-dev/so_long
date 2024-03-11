@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:34 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/02/12 12:04:34 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:15:52 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ int		ft_printf(const char *str, ...);
 char	**read_map(int fd, char **map);
 int		move(int keycode, t_manager *manager);
 int		close_win(t_manager *manager);
-int		test_map(t_manager manager);
+int		test_map(t_manager *manager);
 int		get_player_x(t_manager manager);
 int		get_player_y(t_manager manager);
+int		get_max_items(t_manager manager);
+void	free_map(char **map);
 
 int		test_shape(t_manager manager);
 int		test_walls(t_manager manager);

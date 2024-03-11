@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:44:51 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/03/05 12:25:36 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/11 10:10:24 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ char	**array_join(char **array, char *str)
 		i++;
 	new_array = malloc((i + 2) * sizeof(char *));
 	if (!new_array)
+	{
+		free_map(array);
+		free(str);
 		return (NULL);
+	}
 	k = 0;
 	while (k < i)
 	{
@@ -88,6 +92,8 @@ char	**read_map(int fd, char **map)
 	while (str)
 	{
 		map = array_join(map, str);
+		if (map == NULL)
+			return (NULL);
 		str = get_next_line(fd);
 	}
 	free(str);

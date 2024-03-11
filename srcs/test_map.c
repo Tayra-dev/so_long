@@ -34,18 +34,24 @@ int	test_comp(t_manager manager)
 	return (0);
 }
 
-int	test_map(t_manager manager)
+int	test_map(t_manager *manager)
 {
-	if (test_shape(manager))
+	if (manager->map[0] == NULL)
+		return (ft_error(-10));
+	if (test_shape(*manager))
 		return (ft_error(-2));
-	if (test_elts(manager, 0))
+	if (test_elts(*manager, 0))
 		return (ft_error(-1));
-	if (test_walls(manager))
+	if (test_walls(*manager))
 		return (ft_error(-3));
-	if (test_comp(manager))
+	if (test_comp(*manager))
 		return (ft_error(-4));
-	solver(&manager, manager.player_y, manager.player_x);
-	if (!(manager.total_items == manager.test_item && manager.test_exit == 1))
+	manager->total_items = get_max_items(*manager);
+	manager->player_x = get_player_x(*manager);
+	manager->player_y = get_player_y(*manager);
+	solver(manager, manager->player_y, manager->player_x);
+	if (!(manager->total_items == manager->test_item 
+			&& manager->test_exit == 1))
 		return (ft_error(-5));
 	return (0);
 }

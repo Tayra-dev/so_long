@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:14 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/03/05 12:46:16 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:24:13 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	free_map(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (map && map[i])
 	{
 		free(map[i]);
 		i++;
 	}
+	free(map);
 }
 
 int	ft_error(int error)
@@ -44,6 +45,8 @@ int	ft_error(int error)
 		ft_printf("Error\nCan't read the map\n");
 	if (error == -9)
 		ft_printf("Error\nWrong file extension\n");
+	if (error == -10)
+		ft_printf("Error\nThe provided map is empty\n");
 	return (-1);
 }
 
@@ -53,8 +56,8 @@ int	close_win(t_manager *manager)
 	free(manager->mlx);
 	free_map(manager->map);
 	free_map(manager->testmap);
+	system("leaks so_long");
 	exit(0);
-	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -82,5 +85,6 @@ int	main(int argc, char **argv)
 				free_map(manager.testmap);
 		}
 	}
+	system("leaks so_long");
 	return (0);
 }
