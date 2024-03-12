@@ -6,70 +6,86 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:22:05 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/03/05 12:11:49 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/12 17:39:13 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-void	setexit(void *mlx, void *window, int x, int y)
+int	setexit(void *mlx, void *window, int x, int y)
 {
 	void	*img;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
 
+	img = NULL;
 	relative_path = "./textures/tiles/exit.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	if (img == NULL)
+		return (-1);
 	mlx_put_image_to_window(mlx, window, img,
 		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
 		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
 	mlx_destroy_image(mlx, img);
+	return (0);
 }
 
-void	setwall(void *mlx, void *window, int x, int y)
+int	setwall(void *mlx, void *window, int x, int y)
 {
 	void	*img;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
 
+	img = NULL;
 	relative_path = "./textures/tiles/wall.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	mlx_put_image_to_window(mlx, window, img, 
-		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
-		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
-	mlx_destroy_image(mlx, img);
-}
-
-void	setpath(void *mlx, void *window, int x, int y)
-{
-	void	*img;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
-
-	relative_path = "./textures/tiles/path.xpm";
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	if (img == NULL)
+		return (-1);
 	mlx_put_image_to_window(mlx, window, img,
 		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
 		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
 	mlx_destroy_image(mlx, img);
+	return (0);
 }
 
-void	setitem(void *mlx, void *window, int x, int y)
+int	setpath(void *mlx, void *window, int x, int y)
 {
 	void	*img;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
 
+	img = NULL;
+	relative_path = "./textures/tiles/path.xpm";
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	if (img == NULL)
+		return (-1);
+	mlx_put_image_to_window(mlx, window, img,
+		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
+		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET);
+	mlx_destroy_image(mlx, img);
+	return (0);
+}
+
+int	setitem(void *mlx, void *window, int x, int y)
+{
+	void	*img;
+	char	*relative_path;
+	int		img_width;
+	int		img_height;
+
+	img = NULL;
 	relative_path = "./textures/items/item.xpm";
 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	if (img == NULL)
+		return (-1);
 	mlx_put_image_to_window(mlx, window, img,
 		(x * (WIDTH / 2)) - y * (WIDTH / 2) + OFFSET,
 		((y * WIDTH) + (x * WIDTH / 4)) - y * (WIDTH / 1.33) + OFFSET - 10);
 	mlx_destroy_image(mlx, img);
+	return (0);
 }
 
 void	display_map(t_manager manager)

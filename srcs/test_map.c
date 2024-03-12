@@ -50,7 +50,7 @@ int	test_map(t_manager *manager)
 	manager->player_x = get_player_x(*manager);
 	manager->player_y = get_player_y(*manager);
 	solver(manager, manager->player_y, manager->player_x);
-	if (!(manager->total_items == manager->test_item 
+	if (!(manager->total_items == manager->test_item
 			&& manager->test_exit == 1))
 		return (ft_error(-5));
 	return (0);

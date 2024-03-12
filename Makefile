@@ -4,7 +4,7 @@ NAME = so_long
 OBJS = $(SRCS:.c=.o)
 GNL = gnl/gnl
 PRINTF = ft_printf/libftprintf.a
-CC = gcc
+CC = cc
 
 
 all : $(NAME)

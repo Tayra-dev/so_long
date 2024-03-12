@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:14 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/03/11 11:24:13 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/11 14:55:13 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ int	ft_error(int error)
 int	close_win(t_manager *manager)
 {
 	mlx_destroy_window(manager->mlx, manager->window);
-	free(manager->mlx);
 	free_map(manager->map);
 	free_map(manager->testmap);
-	system("leaks so_long");
 	exit(0);
 }
 
@@ -85,6 +83,5 @@ int	main(int argc, char **argv)
 				free_map(manager.testmap);
 		}
 	}
-	system("leaks so_long");
 	return (0);
 }

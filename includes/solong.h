@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:42:34 by hle-roi           #+#    #+#             */
-/*   Updated: 2024/03/11 11:15:52 by hle-roi          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:08:39 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SOLONG_H
 
 # include <mlx.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -59,8 +58,8 @@ int		test_elts(t_manager manager, int y);
 
 void	solver(t_manager *manager, int y, int x);
 
-void	setpath(void *mlx, void *window, int x, int y);
-void	setexit(void *mlx, void *window, int x, int y);
+int		setpath(void *mlx, void *window, int x, int y);
+int		setexit(void *mlx, void *window, int x, int y);
 
 int		ft_error(int error);
 
